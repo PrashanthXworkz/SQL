@@ -16,3 +16,45 @@ Insert into product values(8, 'LunaSphere 360', '2023-06-25', 120, 79.99, '2024-
 Insert into product values(9, 'ZenWave Harmony', '2023-07-08', 100, 34.99, '2024-04-08', 900, 'SerenityTech', 'ZenCity', true);
 Insert into product values(10, 'PuraTech Cleanse', '2023-08-30', 80, 24.99, '2024-08-30', 2000, 'PureWellness', 'CleanseVille', true);
  
+ select * from product;
+ 
+ create view product_view as select * from product;
+ 
+ select * from product group by product_name;
+ 
+ delete from product where product_id=10;
+ 
+ select * from product where product_name like '%c';
+ 
+  select * from product where product_name like 'a%';
+  
+  SELECT * FROM product WHERE SUBSTRING(product_name, 4, 1) = 'r';
+  
+  select min(product_price) from product;
+  
+  select max(product_price) from product;
+    
+  select avg(product_price) from product;
+  
+ select max(product_price) from product where product_price<(select max(product_price) from product );
+ 
+ select min(product_price) from product where product_price>(select min(product_price) from product);  
+ 
+ select avg(product_price) from product  where product_price>(select avg(product_price) from product);
+ 
+ 
+ SELECT * FROM product p WHERE EXISTS (SELECT 1 FROM product
+    WHERE p.product_id = product.product_id
+    AND SUBSTRING(product_name, 4, 1) = 'r');
+
+SELECT * FROM product p WHERE NOT EXISTS (
+    SELECT 1
+    FROM product
+    WHERE p.product_id = product.product_id
+    AND SUBSTRING(product_name, 4, 1) = 'r');
+
+select * from product group by validity;
+
+ 
+ 
+ 
